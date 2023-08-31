@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+     <title>New Inventory</title>
+     <link rel="stylesheet" href="{% static 'css/appl.css'%}">
+     </head>
+     <body>
+       <div id="header">    
+         <h1>Inventory Records</h1>
+         <div id="nav">
+           <!-- <a href="view-all">View All</a>
+           <a href="new-inventory">Add Inventory</a> -->
+          <!-- <a href="logout">Logout</a> -->
+          </div>
+          <div id="hello">Hello,{{request.session.username}}</div>
+        </div>
+        <div id="main">
+        <form method="POST">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td style="color:black;"><label for="username">Username</label></td>
+              <td><input type="text" name="username" id="username"></td>
+            </tr>
+            <tr>
+              <td style="color:black;"><label for="password">Password</label></td>
+              <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="submit" value="Login"></td>
+            </tr>
+          </table>
+        </form>
+      <p>{{error}}</p>
+    </div>
+  </body>
+</html>

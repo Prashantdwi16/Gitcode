@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+     <title>New Inventory</title>
+     <link rel="stylesheet" href="{% static 'css/appl.css'%}">
+     </head>
+     <body>
+       <div id="header">    
+         <h1>Inventory Records</h1>
+         <div id="nav">
+           <a href="view-all">View All</a>
+           <a href="new-inventory">Add Inventory</a>
+          <a href="logout">Logout</a>
+          </div>
+          <div id="hello">Hello,{{request.session.username}}</div>
+        </div>
+        <div id="main">
+          <h2>All Inventory Records</h2>
+          <table>
+            <thead>
+              <th>ProductId</th>
+              <th>ProductName</th>
+              <th>Vendor</th>
+              <th>MRP</th>
+              <th>BatchNum</th>
+              <th>BatchDate</th>
+              <th>Quantity</th>
+              <th>status</th>
+            </thead>
+            {% for item in item %}
+            <tr>
+              <td>{{item.ProductId}}</td>
+              <td>{{item.ProductName}}</td>
+              <td>{{item.Vendor}}</td>
+              <td>{{item.MRP}}</td>
+              <td>{{item.BatchNum}}</td>
+              <td>{{item.BatchDate}}</td>
+              <td>{{item.Quantity}}</td>
+              <td>{{item.status}}</td>
+              
+              <td><a class="btn" href="edit-inventory?inventoryid={{item.id}}">Edit</a></td>
+              <td><a class="btn" href="delete-inventory?inventoryid={{item.id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+            </table>
+          </div>
+        </body>
+      </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+     <title>New Inventory</title>
+     <link rel="stylesheet" href="{% static 'css/appl.css'%}">
+     </head>
+     <body>
+       <div id="header">    
+         <h1>Inventory Records</h1>
+         <div id="nav">
+           <a href="view-all">View All</a>
+           <a href="new-inventory">Add Inventory</a>
+          <a href="logout">Logout</a>
+          </div>
+          <div id="hello">Hello,{{request.session.username}}</div>
+        </div>
+        <div id="main">
+          <h2>Add New Inventory Record</h2>
+          <form action="merge" method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="add">
+          </form>
+        </div>
+      </body>
+    </html>
